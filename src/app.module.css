@@ -1,0 +1,25 @@
+.app {
+  max-width: 80rem;
+}
+
+.video_info{
+  display:flex;
+  justify-content:space-between;
+}
+
+.video_container{
+  display:flex;
+  justify-content:space-between;
+ width:90%;
+ margin:20px auto 0;
+}
+
+*{margin:0; padding:0;}
+
+li{list-style:none;}
+
+@media screen and (max-width:48rem){
+  .video_container{
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,64 @@
+@value mediaQuery992, mediaQuery768, mediaQuery576 from '../../common/size.css';
+@value makerWhite from 'common/colors.css';
+
+.video_item {
+  width: 24%;
+  padding-bottom:10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  /* background-color: makerWhite; */
+  transition: all 0.3s ease;
+  cursor:pointer;
+}
+
+.video_item:hover {
+  transform: scale(1.02);
+}
+
+.video_item.list {
+  width: 100%;
+}
+
+.video_img {
+  /* width:29%; */
+}
+
+.video_img img {
+  width: 100%;
+}
+.video_text {
+  font-size: 0.9rem;
+}
+.video_title {
+  padding: 10px 0 5px;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.channel {
+  color: #777;
+}
+
+@media screen and (max-width: mediaQuery992) {
+  .video_item {
+    width: 32%;
+  }
+}
+@media screen and (max-width: mediaQuery768) {
+  body {
+    background-color: pink;
+  }
+
+  .video_item {
+    width: 49%;
+  }
+}
+@media screen and (max-width: mediaQuery576) {
+  body {
+    background-color: skyblue;
+  }
+
+  .video_item {
+    width: 100%;
+  }
+}

@@ -1,0 +1,97 @@
+@value makerLightGrey, makerLightGrey2, makerWhite, makerBlack from '../../common/colors.css';
+@font-face {
+  font-family: "Alternate Gothic";
+  src: url("../../fonts/Alternate-Gothic-No2-D-Regular.woff");
+}
+
+.search_form {
+  padding: 0 5%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  position: relative;
+}
+
+.search_form.light {
+  background-color: makerWhite;
+}
+
+.search_form.dark {
+  background-color: makerBlack;
+}
+.logo {
+  flex-basis: 25%;
+  font-family: "Alternate Gothic";
+}
+.logo.light {
+  color: makerBlack;
+}
+.logo.dark {
+  color: makerWhite;
+}
+.logo img,
+.logo span {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 45%;
+}
+.search input,
+.search button {
+  border: 1px solid makerLightGrey;
+  height: 35px;
+  vertical-align: middle;
+}
+.search input {
+  width: 90%;
+  text-indent: 10px;
+  border-right: none;
+}
+.search button {
+  width: 40px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: makerLightGrey2;
+}
+
+.search_btn img {
+  width: 50%;
+}
+
+.mode {
+  padding: 2px 15px;
+  border-radius: 40px;
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode.light {
+  background-color: makerBlack;
+  color: makerWhite;
+}
+
+.mode.dark {
+  background-color: makerWhite;
+  color: makerBlack;
+}
+
+.keywords {
+  flex-basis: 100%;
+  display: flex;
+  justify-content:space-between;
+}
+
+.keyword{
+  width:19%;
+  text-align:center;
+  padding:1px 10px;
+  background-color:gold;
+  border-radius:20px;
+}
