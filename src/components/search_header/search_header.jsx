@@ -8,7 +8,7 @@ const Search_header = memo(({search, lightMode, setLightMode}) => {
   const handleSubmit = useCallback(event => {
     event.preventDefault();
     const value = inputRef.current.value;
-    // search(value);
+    search(value);
     setKeywords(prev => [...prev, value]);
     localStorage.setItem("keywords", JSON.stringify({keywords}));
     inputRef.current.value = "";
@@ -29,7 +29,6 @@ const Search_header = memo(({search, lightMode, setLightMode}) => {
   if (localStorage.getItem("keywords")) {
     keywordsLists = JSON.parse(localStorage.getItem("keywords")).keywords;
   }
-  console.log(JSON.parse(localStorage.getItem("keywords")).keywords);
 
   return (
     <form
