@@ -7,7 +7,7 @@ const video_list = ({videos, videoDetail, display}) => {
   console.log("video list");
   return (
     <ul className={`${styles.video_list} ${displayType}`}>
-      {videos.map(video => {
+      {videos && videos.map(video => {
         return (
           <Video_item
             key={video.id}
