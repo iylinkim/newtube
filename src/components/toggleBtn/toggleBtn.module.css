@@ -1,0 +1,29 @@
+@value makerLightGrey from "common/colors.css";
+
+.mode {
+  width: 80px;
+  line-height: 20px;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: makerLightGrey;
+  color: #444;
+  font-size:0.7rem;
+  position:absolute;
+  right:5%;
+  top:20px;
+}
+
+.mode_state {
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition:all 0.3s ease;
+}
+
+
+.mode_state.selected {
+  background-color: #333;
+  color: #efefef;
+}

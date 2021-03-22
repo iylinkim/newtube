@@ -11,9 +11,9 @@ const Video_detail = ({video}) => {
         height='500'
         src={`http://www.youtube.com/embed/${video.id}`}
         frameBorder='0'></iframe>
-      <h2>{video.snippet.title}</h2>
-      <h3>{video.snippet.channelTitle}</h3>
-      <p>{video.snippet.description}</p>
+      <h2 className={styles.title}>{video.snippet.title}</h2>
+      <h3 className={styles.channelTitle}>{video.snippet.channelTitle}</h3>
+      <p className={styles.description}>{video.snippet.description}</p>
     </div>
   );
 };

@@ -1,9 +1,13 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import React, { memo, useCallback, useRef, useState } from "react";
 import styles from "./search_header.module.css";
 
-const Search_header = memo(({ search, lightMode, setLightMode }) => {
+const Search_header = memo(({ search, darkMode, setSelectedVideo }) => {
   const inputRef = useRef();
   const [keywords, setKeywords] = useState([]);
+
+  const goToHome = () => {
+    setSelectedVideo(null);
+  };
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
@@ -19,10 +23,6 @@ const Search_header = memo(({ search, lightMode, setLightMode }) => {
     setKeywords(keywords);
   }
 
-  const setToggle = () => {
-    setLightMode((prev) => !prev);
-  };
-
   // localStorage에서 값 받아오기
   let keywordsLists;
   if (localStorage.getItem("keywords")) {
@@ -37,49 +37,46 @@ const Search_header = memo(({ search, lightMode, setLightMode }) => {
   return (
     <form
       className={
-        lightMode
-          ? `${styles.search_form} ${styles.light}`
-          : `${styles.search_form} ${styles.dark}`
+        darkMode ? `${styles.search_form} ${styles.dark}` : styles.search_form
       }
       onSubmit={handleSubmit}
     >
       <h1
-        className={
-          lightMode
-            ? `${styles.logo} ${styles.light}`
-            : `${styles.logo} ${styles.dark}`
-        }
+        onClick={goToHome}
+        className={darkMode ? `${styles.logo} ${styles.dark}` : styles.logo}
       >
         <img src="/images/logo.png" alt="youtube logo" />
         <span>Youtube</span>
       </h1>
       <div className={styles.search}>
         <input ref={inputRef} type="text" placeholder="Search" />
-        <button className={styles.search_btn}>
+        <button
+          className={
+            darkMode ? `${styles.search_btn} ${styles.dark}` : styles.search_btn
+          }
+        >
           <img src="/images/search.png" alt="search icon" />
         </button>
         <ul className={styles.keywords}>
-          <li>recent search:</li>
+          <li className={styles.recent_search}>recent search:</li>
           {keywordsLists &&
             keywordsLists.map((keyword) => {
               return (
-                <li className={styles.keyword} onClick={searchKeyword}>
+                <li
+                  key={keyword}
+                  className={
+                    darkMode
+                      ? `${styles.keyword} ${styles.dark}`
+                      : styles.keyword
+                  }
+                  onClick={searchKeyword}
+                >
                   {keyword}
                 </li>
               );
             })}
         </ul>
       </div>
-      <p
-        className={
-          lightMode
-            ? `${styles.mode} ${styles.light}`
-            : `${styles.mode} ${styles.dark}`
-        }
-        onClick={setToggle}
-      >
-        {lightMode ? "Dark Mode" : "Light Mode"}
-      </p>
     </form>
   );
 });

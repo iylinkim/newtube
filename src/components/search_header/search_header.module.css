@@ -10,6 +10,7 @@
   flex-wrap: nowrap;
   align-items: center;
   position: relative;
+  background-color:#fff;
 }
 
 .search_form.light {
@@ -23,6 +24,7 @@
   font-size:1.7rem;
   flex-basis: 25%;
   font-family: "Alternate Gothic";
+  cursor:pointer;
 }
 .logo.light {
   color: makerBlack;
@@ -37,6 +39,7 @@
   margin-right: 5px;
 }
 .search {
+  min-width:300px;
   display: flex;
   flex-wrap: wrap;
   flex-basis: 45%;
@@ -58,7 +61,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: makerLightGrey2;
+  background-color: #e4e4e4;
+  border:none;
 }
 
 .search_btn img {
@@ -89,12 +93,13 @@
   padding-top: 8px;
   flex-basis: 100%;
   display: flex;
-  justify-content: space-between;
+  align-items:center;
   font-size: 0.8rem;
 }
 
 .keyword {
   width: 19%;
+  margin-right:5px;
   height: 20px;
   line-height: 20px;
   text-align: center;
@@ -107,4 +112,17 @@
 
 .keyword:hover {
   background-color: #cdcdcd;
+}
+
+.recent_search{
+  padding-right:10px;
+  color:#555;
+}
+/* dark mode */
+.search_btn.dark{
+  background-color:#555;
+}
+
+.keyword.dark{
+  color:#333;
 }

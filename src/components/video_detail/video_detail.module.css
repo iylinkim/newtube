@@ -1,3 +1,18 @@
 .detail{
     flex-basis:78%;
 }
+
+.title{
+    font-size:1.2rem;
+    padding:10px 0 15px;
+}
+
+.channelTitle{
+    padding-bottom:5px;
+    font-size:1rem;
+    color:#333;
+}
+
+.description{
+    font-size:0.8rem;
+}
