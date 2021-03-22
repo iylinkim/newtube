@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 import styles from "./video_item.module.css";
 
-const Video_item = memo(({video: {snippet}, videoDetail, display, video}) => {
+const VideoItem = memo(({video: {snippet}, videoDetail, display, video}) => {
   const handleDetail = () => {
     videoDetail(video);
   };
@@ -26,4 +26,4 @@ const Video_item = memo(({video: {snippet}, videoDetail, display, video}) => {
   );
 });
 
-export default Video_item;
+export default VideoItem;

@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useRef, useState } from "react";
 import styles from "./search_header.module.css";
 
-const Search_header = memo(({ search, darkMode, setSelectedVideo }) => {
+const SearchHeader = memo(({ search, darkMode, setSelectedVideo }) => {
   const inputRef = useRef();
   const [keywords, setKeywords] = useState([]);
 
@@ -16,7 +16,7 @@ const Search_header = memo(({ search, darkMode, setSelectedVideo }) => {
     setKeywords((prev) => [...prev, value]);
     localStorage.setItem("keywords", JSON.stringify({ keywords }));
     inputRef.current.value = "";
-  });
+  },[keywords, search]);
 
   if (keywords.length > 5) {
     keywords.shift();
@@ -45,8 +45,8 @@ const Search_header = memo(({ search, darkMode, setSelectedVideo }) => {
         onClick={goToHome}
         className={darkMode ? `${styles.logo} ${styles.dark}` : styles.logo}
       >
-        <img src="/images/logo.png" alt="youtube logo" />
-        <span>Youtube</span>
+        <img src="images/logo.png" alt="youtube logo" />
+        <span>Newtube</span>
       </h1>
       <div className={styles.search}>
         <input ref={inputRef} type="text" placeholder="Search" />
@@ -55,7 +55,7 @@ const Search_header = memo(({ search, darkMode, setSelectedVideo }) => {
             darkMode ? `${styles.search_btn} ${styles.dark}` : styles.search_btn
           }
         >
-          <img src="/images/search.png" alt="search icon" />
+          <img src="images/search.png" alt="search icon" />
         </button>
         <ul className={styles.keywords}>
           <li className={styles.recent_search}>recent search:</li>
@@ -81,4 +81,4 @@ const Search_header = memo(({ search, darkMode, setSelectedVideo }) => {
   );
 });
 
-export default Search_header;
+export default SearchHeader;
