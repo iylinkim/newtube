@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/newtube/static/css/main.70303459.chunk.css",
+    "main.js": "/newtube/static/js/main.8c251562.chunk.js",
+    "main.js.map": "/newtube/static/js/main.8c251562.chunk.js.map",
+    "runtime-main.js": "/newtube/static/js/runtime-main.d3617636.js",
+    "runtime-main.js.map": "/newtube/static/js/runtime-main.d3617636.js.map",
+    "static/js/2.0eabc93f.chunk.js": "/newtube/static/js/2.0eabc93f.chunk.js",
+    "static/js/2.0eabc93f.chunk.js.map": "/newtube/static/js/2.0eabc93f.chunk.js.map",
+    "index.html": "/newtube/index.html",
+    "static/css/main.70303459.chunk.css.map": "/newtube/static/css/main.70303459.chunk.css.map",
+    "static/js/2.0eabc93f.chunk.js.LICENSE.txt": "/newtube/static/js/2.0eabc93f.chunk.js.LICENSE.txt",
+    "static/media/search_header.module.css": "/newtube/static/media/Alternate-Gothic-No2-D-Regular.f088b79d.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d3617636.js",
+    "static/js/2.0eabc93f.chunk.js",
+    "static/css/main.70303459.chunk.css",
+    "static/js/main.8c251562.chunk.js"
+  ]
+}
