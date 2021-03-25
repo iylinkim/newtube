@@ -3,7 +3,7 @@
 
 .video_item {
   width: 24%;
-  padding:10px;
+  padding: 10px;
   padding-bottom: 10px;
   margin-bottom: 15px;
   box-sizing: border-box;
@@ -48,10 +48,6 @@
   }
 }
 @media screen and (max-width: mediaQuery576) {
-  body {
-    background-color: skyblue;
-  }
-
   .video_item {
     width: 100%;
   }

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import styles from "./search_header.module.css";
 
 const SearchHeader = memo(({ search, darkMode, setSelectedVideo }) => {
@@ -9,25 +9,29 @@ const SearchHeader = memo(({ search, darkMode, setSelectedVideo }) => {
     setSelectedVideo(null);
   };
 
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault();
-    const value = inputRef.current.value;
-    search(value);
-    setKeywords((prev) => [...prev, value]);
-    localStorage.setItem("keywords", JSON.stringify({ keywords }));
-    inputRef.current.value = "";
-  },[keywords, search]);
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      const value = inputRef.current.value;
+      search(value);
+      setKeywords((prev) => {
+        return prev && [...prev, value];
+      });
+      localStorage.setItem("keywords", JSON.stringify(keywords));
+      inputRef.current.value = "";
+    },
+    [keywords, search]
+  );
 
-  if (keywords.length > 5) {
-    keywords.shift();
-    setKeywords(keywords);
-  }
+  useEffect(() => {
+    // localStorage에서 값 받아오기
 
-  // localStorage에서 값 받아오기
-  let keywordsLists;
-  if (localStorage.getItem("keywords")) {
-    keywordsLists = JSON.parse(localStorage.getItem("keywords")).keywords;
-  }
+    if (localStorage.getItem("keywords") !== 'undefined') {
+      setKeywords(() => {
+        return JSON.parse(localStorage.getItem("keywords")).keywords;
+      });
+    } 
+  }, []);
 
   const searchKeyword = (event) => {
     const value = event.currentTarget.innerText;
@@ -59,11 +63,10 @@ const SearchHeader = memo(({ search, darkMode, setSelectedVideo }) => {
         </button>
         <ul className={styles.keywords}>
           <li className={styles.recent_search}>recent search:</li>
-          {keywordsLists &&
-            keywordsLists.map((keyword) => {
+          {keywords &&
+            keywords.map((keyword) => {
               return (
                 <li
-                  key={keyword}
                   className={
                     darkMode
                       ? `${styles.keyword} ${styles.dark}`
