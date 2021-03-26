@@ -1,4 +1,5 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import styles from "./search_header.module.css";
 
 const SearchHeader = memo(({ search, darkMode, setSelectedVideo }) => {
@@ -14,9 +15,17 @@ const SearchHeader = memo(({ search, darkMode, setSelectedVideo }) => {
       event.preventDefault();
       const value = inputRef.current.value;
       search(value);
-      setKeywords((prev) => {
-        return prev && [...prev, value];
-      });
+
+      if (keywords.length >= 6) {
+        const newKeywords = [...keywords];
+        newKeywords.shift();
+        setKeywords(() => [...newKeywords]);
+        localStorage.setItem("keywords", JSON.stringify(keywords));
+      } else if(keywords.length < 6){
+        setKeywords(() => {
+          return [...keywords, value];
+        });
+      }
       localStorage.setItem("keywords", JSON.stringify(keywords));
       inputRef.current.value = "";
     },
@@ -25,12 +34,17 @@ const SearchHeader = memo(({ search, darkMode, setSelectedVideo }) => {
 
   useEffect(() => {
     // localStorage에서 값 받아오기
-
-    if (localStorage.getItem("keywords") !== 'undefined') {
+    if (
+      localStorage.getItem("keywords") &&
+      localStorage.getItem("keywords") !== "undefined"
+    ) {
+      console.log("have ls");
       setKeywords(() => {
-        return JSON.parse(localStorage.getItem("keywords")).keywords;
+        return JSON.parse(localStorage.getItem("keywords"));
       });
-    } 
+    } else {
+      console.log("empty ls");
+    }
   }, []);
 
   const searchKeyword = (event) => {
@@ -62,11 +76,12 @@ const SearchHeader = memo(({ search, darkMode, setSelectedVideo }) => {
           <img src="images/search.png" alt="search icon" />
         </button>
         <ul className={styles.keywords}>
-          <li className={styles.recent_search}>recent search:</li>
+          <li key={uuidv4()} className={styles.recent_search}>recent search:</li>
           {keywords &&
             keywords.map((keyword) => {
               return (
                 <li
+                  key={uuidv4()}
                   className={
                     darkMode
                       ? `${styles.keyword} ${styles.dark}`
